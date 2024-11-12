@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jwt-auth
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jwt-auth
+  template:
+    metadata:
+      labels:
+        app: jwt-auth
+    spec:
+      containers:
+        - name: jwt-auth
+          image: jwt-auth:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9100
